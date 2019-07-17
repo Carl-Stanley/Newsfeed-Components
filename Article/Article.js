@@ -1,5 +1,31 @@
 /* This is the data we will be using to create our article components */
 /* Look over this data, then proceed to line 91*/
+/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+  
+  <div class="article">
+    <h2>{title of the article}</h2>
+    <p class="date">{date of the article}</p>
+
+    {three separate paragraph elements}
+
+    <span class='expandButton'></span>
+  </div>
+
+
+  Hint: You will need to use createElement more than once here!
+
+  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
+
+  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+
+  Step 3: return the entire component.
+
+  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+
+  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
+
+*/
+
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -103,34 +129,7 @@ const data = [
   }
 ];
 
-
-
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
-
-    {three separate paragraph elements}
-
-    <span class='expandButton'></span>
-  </div>
-
-
-  Hint: You will need to use createElement more than once here!
-
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
-
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-
-  Step 3: return the entire component.
-
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
-
-*/
-
+// Create the articles
 function createArticle (theData) {
   
   // Grab the main DIV - articles
@@ -139,8 +138,10 @@ function createArticle (theData) {
   // Create a new div named article
   var elementDIV = document.createElement("div");
   
+  // Add the h2 element
   var elementH2 = document.createElement("h2");
-
+ 
+  // Add all p elements
   var elementP0 = document.createElement("p");
 
   var elementP1 = document.createElement("p");
@@ -148,23 +149,23 @@ function createArticle (theData) {
   var elementP2 = document.createElement("p");
 
   var elementP3 = document.createElement("p");
-
+ // Add the span element 
   var elementSPAN = document.createElement("span");  
   
-  elementDIV.classList.add('article');
-  
+  // add class names to the elements
+  elementDIV.classList.add('article');  
   elementP0.classList.add('date');
-
-  elementSPAN.classList.add();
+  elementSPAN.classList.add('expandButton');
   
+  // populate the inner text of each element from the data object
   elementH2.innerText = theData.title;
   elementP0.innerText = theData.date;
   elementP1.innerText = theData.firstParagraph;
   elementP2.innerText = theData.secondParagraph;
   elementP3.innerText = theData.thirdParagraph;
 
-  elementSPAN.classList.add('expandButton');
-
+ 
+ // Append each element to the article div
   elementDIV.appendChild(elementH2);
   elementDIV.appendChild(elementP0);
   elementDIV.appendChild(elementP1);
@@ -172,32 +173,28 @@ function createArticle (theData) {
   elementDIV.appendChild(elementP3);
   elementDIV.appendChild(elementSPAN);
 
+  // Append the new article div to the articles div
   elementADIV.appendChild(elementDIV);
-
-  
 
 }
 
+// Call created articles 
 createArticle(data[0]);
-
 createArticle(data[1]);
-
 createArticle(data[2]);
-
 createArticle(data[3]);
-
 createArticle(data[4]);
 
+// Handle click event on articles. 
 class Article {
   constructor(domElement) {
-    // assign this.domElement to the passed in domElement
+   
     this.domElement = domElement;
-    // create a reference to the ".expandButton" class. 
+  
     this.expandButton = this.domElement.querySelector('.expandButton');
     
     this.expandButton.innerText = 'Click Here to Expand';
-    // Using your expandButton reference, update the text on your expandButton to say "expand"
-    // Set a click handler on the expandButton reference, calling the expandArticle method.
+    
     this.expandButton.addEventListener('click', this.expandArticle);
 
   }
@@ -210,14 +207,6 @@ class Article {
   }
 }
 
-/* START HERE: 
-
-- Select all classes named ".article" and assign that value to the articles variable.  
-
-- With your selection in place, now chain .forEach() on to the articles variable to iterate over the articles NodeList and create a new instance of Article by passing in each article as a parameter to the Article class.
-
-*/
-
 // Get the articles 
 let articles = document.querySelectorAll('.article');
 
@@ -225,7 +214,7 @@ let articles = document.querySelectorAll('.article');
 
 articles = Array.from(articles).map( article => new Article(article));
 
-// This all works, but I still don't understand all of the code. 
+ 
   
 
   
