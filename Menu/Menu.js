@@ -40,6 +40,7 @@ function createMenu (arr) {
   var elementUL = document.createElement("ul");
   var elementLI = document.createElement("li");
   var elementHeader = document.getElementsByClassName("header")[0];
+  
   for(i in arr) {
 
     elementLI.innerText = arr[i];
