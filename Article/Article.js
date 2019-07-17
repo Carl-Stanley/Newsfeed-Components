@@ -178,7 +178,7 @@ function createArticle (theData) {
 
 }
 
-// Call created articles 
+// Call createArticles 
 createArticle(data[0]);
 createArticle(data[1]);
 createArticle(data[2]);
