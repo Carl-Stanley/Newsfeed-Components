@@ -39,7 +39,7 @@ function createMenu (arr) {
   var elementDIV = document.createElement("div");
   var elementUL = document.createElement("ul");
   var elementLI = document.createElement("li");
-
+  var elementHeader = document.getElementsByClassName("header")[0];
   for(i in arr) {
 
     elementLI.innerText = arr[i];
@@ -48,6 +48,7 @@ function createMenu (arr) {
   }
 
   elementDIV.appendChild(elementUL);
-  
+  elementHeader.appendChild(elementDIV);
 }
 
+createMenu(menuItems);
