@@ -86,6 +86,21 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+  ,
+  {
+    title: 'My New Article in 2019',
+    date: 'Jan 3rd, 2019',
+    firstParagraph: `Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters. `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  }
 ];
 
 
@@ -115,34 +130,103 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+function createArticle (theData) {
   
+  // Grab the main DIV - articles
+  var elementADIV = document.getElementsByClassName("articles")[0];
+  
+  // Create a new div named article
   var elementDIV = document.createElement("div");
+  
   var elementH2 = document.createElement("h2");
+
+  var elementP0 = document.createElement("p");
+
+  var elementP1 = document.createElement("p");
+
+  var elementP2 = document.createElement("p");
+
+  var elementP3 = document.createElement("p");
+
   var elementSPAN = document.createElement("span");  
   
   elementDIV.classList.add('article');
-  elementH2.classList.add('date');
+  
+  elementP0.classList.add('date');
+
+  elementSPAN.classList.add();
+  
+  elementH2.innerText = theData.title;
+  elementP0.innerText = theData.date;
+  elementP1.innerText = theData.firstParagraph;
+  elementP2.innerText = theData.secondParagraph;
+  elementP3.innerText = theData.thirdParagraph;
+
   elementSPAN.classList.add('expandButton');
 
   elementDIV.appendChild(elementH2);
-  
-  elementDIV.appendChild(document.createElement('p'));
-  
-  elementDIV.appendChild(document.createElement('p'));
-
-  elementDIV.appendChild(document.createElement('p'));
- 
-
-  var elementADIV = document.getElementsByClassName("articles")[0];
+  elementDIV.appendChild(elementP0);
+  elementDIV.appendChild(elementP1);
+  elementDIV.appendChild(elementP2);
+  elementDIV.appendChild(elementP3);
+  elementDIV.appendChild(elementSPAN);
 
   elementADIV.appendChild(elementDIV);
 
-
-
-  //element2.appendChild(document.createElement('div'));
-
   
- 
+
+}
+
+createArticle(data[0]);
+
+createArticle(data[1]);
+
+createArticle(data[2]);
+
+createArticle(data[3]);
+
+createArticle(data[4]);
+
+class Article {
+  constructor(domElement) {
+    // assign this.domElement to the passed in domElement
+    this.domElement = domElement;
+    // create a reference to the ".expandButton" class. 
+    this.expandButton = this.domElement.querySelector('.expandButton');
+    
+    this.expandButton.innerText = 'Click Here to Expand';
+    // Using your expandButton reference, update the text on your expandButton to say "expand"
+    // Set a click handler on the expandButton reference, calling the expandArticle method.
+    this.expandButton.addEventListener('click', this.expandArticle);
+
+  }
+  
+  // Time to handle the event. 
+  expandArticle(event) {
+
+       event.target.parentNode.classList.toggle('article-open');
+       
+  }
+}
+
+/* START HERE: 
+
+- Select all classes named ".article" and assign that value to the articles variable.  
+
+- With your selection in place, now chain .forEach() on to the articles variable to iterate over the articles NodeList and create a new instance of Article by passing in each article as a parameter to the Article class.
+
+*/
+
+// Get the articles 
+let articles = document.querySelectorAll('.article');
+
+// pass the articles along with their on click events into the array or articles. 
+
+articles = Array.from(articles).map( article => new Article(article));
+
+// This all works, but I still don't understand all of the code. 
+  
 
   
 
