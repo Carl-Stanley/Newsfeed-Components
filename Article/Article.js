@@ -179,11 +179,12 @@ function createArticle (theData) {
 }
 
 // Call createArticles 
-createArticle(data[0]);
-createArticle(data[1]);
-createArticle(data[2]);
-createArticle(data[3]);
-createArticle(data[4]);
+
+for(i in data) {
+
+  createArticle(data[i]);
+
+}
 
 // Handle click event on articles. 
 class Article {

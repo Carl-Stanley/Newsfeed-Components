@@ -1,14 +1,4 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
-
-let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
-];
-
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
@@ -33,3 +23,31 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+let menuItems = [
+  'Students',
+  'Faculty',
+  "What's New",
+  'Tech Trends',
+  'Music',
+  'Log Out'
+];
+
+// Create a menu 
+function createMenu (arr) {
+
+  var elementDIV = document.createElement("div");
+  var elementUL = document.createElement("ul");
+  var elementLI = document.createElement("li");
+
+  for(i in arr) {
+
+    elementLI.innerText = arr[i];
+    elementUL.appendChild(elementLI);
+
+  }
+
+  elementDIV.appendChild(elementUL);
+  
+}
+
