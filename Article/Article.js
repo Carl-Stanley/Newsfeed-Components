@@ -116,21 +116,30 @@ const data = [
 
 */
   
-  var element = document.createElement("div");
+  var elementDIV = document.createElement("div");
+  var elementH2 = document.createElement("h2");
+  var elementSPAN = document.createElement("span");  
   
-  element.classList.add('article');
+  elementDIV.classList.add('article');
+  elementH2.classList.add('date');
+  elementSPAN.classList.add('expandButton');
+
+  elementDIV.appendChild(elementH2);
   
-  element.appendChild(document.createElement('h2'));
+  elementDIV.appendChild(document.createElement('p'));
   
-  element.appendChild(document.createElement('p'));
+  elementDIV.appendChild(document.createElement('p'));
 
-  element.appendChild(document.createElement('p'));
+  elementDIV.appendChild(document.createElement('p'));
+ 
 
-  element.appendChild(document.createElement('p'));
+  var elementADIV = document.getElementsByClassName("articles")[0];
 
-  element.appendChild(document.createElement('span'));
+  elementADIV.appendChild(elementDIV);
 
 
+
+  //element2.appendChild(document.createElement('div'));
 
   
  
