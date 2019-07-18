@@ -37,19 +37,54 @@ let menuItems = [
 function createMenu (arr) {
 
   var elementDIV = document.createElement("div");
+  elementDIV.classList.add('menu');
   var elementUL = document.createElement("ul");
-  var elementLI = document.createElement("li");
   var elementHeader = document.getElementsByClassName("header")[0];
+
+  var elementLI0 = document.createElement("li");
+  var elementLI1 = document.createElement("li");
+  var elementLI2 = document.createElement("li");
+  var elementLI3 = document.createElement("li");
+  var elementLI4 = document.createElement("li");
+  var elementLI5 = document.createElement("li");
   
-  for(i in arr) {
 
-    elementLI.innerText = arr[i];
-    elementUL.appendChild(elementLI);
-
-  }
+  elementLI0.innerText = 'Students';
+  elementLI1.innerText = 'Faculty';
+  elementLI2.innerText = "What's New";
+  elementLI3.innerText = 'Tech Trends';
+  elementLI4.innerText = 'Music';
+  elementLI5.innerText = 'Log Out';
+  
+  elementUL.appendChild(elementLI0);
+  elementUL.appendChild(elementLI1);
+  elementUL.appendChild(elementLI2);
+  elementUL.appendChild(elementLI3);
+  elementUL.appendChild(elementLI4);
+  elementUL.appendChild(elementLI5);
 
   elementDIV.appendChild(elementUL);
   elementHeader.appendChild(elementDIV);
 }
 
 createMenu(menuItems);
+
+class menuCreate {
+  constructor(domElement) {
+   
+    this.domElement = domElement;   
+    
+    this.domElement.addEventListener('click', this.expandMenu);
+
+  }
+    
+  expandMenu(event) {
+
+       event.target.parentNode.classList.toggle('menu--open');
+       
+  }
+}
+
+let menuBtn = document.querySelectorAll('.menu-button');
+
+menuBtn = Array.from(menuBtn).map( menuBtn => new menuCreate(menuBtn));
